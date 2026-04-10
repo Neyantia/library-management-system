@@ -8,26 +8,6 @@ Aplikacja przewiduje również panel administratora do zarządzania książkami,
 ## Cel projektu
 Celem projektu jest stworzenie prototypu systemu informatycznego wspierającego obsługę wypożyczalni książek z wykorzystaniem narzędzi do zarządzania projektem i kontroli wersji.
 
-## Zakres funkcjonalny
-System obejmuje następujące funkcjonalności:
-
-- rejestracja, logowanie, wylogowanie użytkownika
-- walidacja poprawności danych logowania
-- podgląd i edycja danych konta użytkownika
-- zmiana hasła
-- przeglądanie katalogu książek
-- podgląd szczegółów książki
-- wyszukiwanie książek po tytule
-- filtrowanie książek po autorze, kategorii i dostępności
-- wypożyczanie książek
-- zwrot książek
-- historia wypożyczeń użytkownika
-- dodawanie opinii do przeczytanych książek
-- panel administratora do zarządzania książkami
-- zarządzanie kategoriami i autorami
-- zarządzanie użytkownikami
-- obsługa statusów wypożyczeń
-
 ## Technologie
 ### Backend
 - NestJS
