@@ -162,9 +162,19 @@ http://localhost:3000/api
 ## Instalacja
 
 ```bash
-git clone <https://github.com/Neyantia/library-management-system/tree/main/backend>
-cd library-management-system
+git clone https://github.com/Neyantia/library-management-system.git
+cd library-management-system/backend
 npm install
+```
+
+## Quick Start
+
+```bash
+git clone https://github.com/Neyantia/library-management-system.git
+cd backend
+npm install
+npm run db:setup
+npm run start:dev
 ```
 
 ---
@@ -191,18 +201,44 @@ PORT=3000
 
 ### Development
 
+### Szybki start (rekomendowane)
+
+```bash
+npm run db:setup
+```
+
+---
+
+### Alternatywnie (krok po kroku)
+
 ```bash
 npm run db:dev:migrate
+npm run db:generate
 npm run db:dev:seed
-npm run db:dev:reset
 ```
+
+Opcjonalnie reset bazy:
+
+```bash
+npm run db:dev:reset
+npm run db:generate
+```
+
+---
 
 ### Test
 
 ```bash
 npm run db:test:migrate
+npm run db:generate
 npm run db:test:seed
+```
+
+Opcjonalnie reset:
+
+```bash
 npm run db:test:reset
+npm run db:generate
 ```
 
 ### Visualization

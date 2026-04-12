@@ -25,6 +25,8 @@
     "test:e2e:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --watchAll --config jest.e2e.cjs",
     "test:e2e:full": "npm run db:test:migrate && npm run test:e2e",
     "db:dev:migrate": "dotenv -e .env.development -- prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:dev:setup": "npm run db:dev:migrate && npm run db:generate",
     "db:dev:seed": "dotenv -e .env.development -- prisma db seed",
     "db:dev:reset": "dotenv -e .env.development -- prisma migrate reset --force",
     "db:test:migrate": "dotenv -e .env.test -- prisma migrate deploy",
