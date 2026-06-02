@@ -1,0 +1,40 @@
+@import "./globals.css";
+
+.img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.moon_image {
+    background-image: var(--moon-image);
+
+    display: block;
+    margin: 2% auto;
+    width: 100px;
+    height: 100px;
+
+    @media (max-width: 768px) {
+        margin-top: 5%;
+    }
+}
+
+.demon_slayer-cover {
+    background-image: var(--demon_slayer);
+}
+
+.her_soul_to_take-cover {
+    background-image: var(--her_soul_to_take);
+}
+
+.nie_pochowani-cover {
+    background-image: var(--nie_pochowani);
+}
+
+.bridgertonowie-cover {
+    background-image: var(--bridgertonowie);
+}
+
+.nie-boska_komedia-cover {
+    background-image: var(--nie-boska_komedia);
+}

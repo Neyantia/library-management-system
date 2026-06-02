@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background_image: url(../public/background.svg);
+
+  --moon-image: url(../public/moon_img.svg);
+  --moon_grl_image: url(../public/moon_grl_img.svg);
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+
+  font-family: 'Inter', sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  width: 100%;
+  margin: 0;
+  
+  background-image: var(--background_image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+
+  @media (max-width: 768px) {
+    min-height: 50vh;
+    background-position: top center;
+    background-size: cover;
+    overflow-x: hidden;
+    background-attachment: fixed;
+  }
+}
+main {
+  flex: 1;
+}
+button {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@theme {
+  /*COLORS*/
+  --purple: #7D73AD;
+  --welcome-dark-purple: #524C87;
+  --welcome-light-purple: #8983BD;
+  --dark-purple: #493F74;
+  --light-purple: #8D7EB1;
+
+  --pink: #D7D1EE;
+  --light-pink: #ECE9FF;
+  --border-light-pink: #C0B5FF;
+  --lilac: #816ED5;
+  
+  --grey: #777777;
+  --light-grey: #D9D9D9;
+  --border-grey: #BFBFBF;
+  --button-grey: #828282;
+  --white: #FFFFFF;
+
+  --NAV-t: #CDC9ED;
+
+  --t-red: #702E39;
+  --T-dark-red: #813248;
+  --btn-red: #9F547D;
+  --background-red: #FDE9FF;
+  --background-border-red: #B17EA0;
+}
+
+/*SCROLLBAR*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-purple);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--pink);
+  border-radius: 8px;
+}
+
