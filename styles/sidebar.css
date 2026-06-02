@@ -1,0 +1,151 @@
+@import "./globals.css";
+
+.menu-button {
+    color: var(--pink);
+    font-size: 20px;
+    font-weight: bold;
+
+    background: none;
+    border: none;
+    border-radius: 8px;
+    position: relative;
+    top: auto;
+    left: auto;
+    padding-left: 15px;
+    z-index: 1000;
+}
+
+.sidebar-main {
+    background-color: var(--pink);
+    width: 300px;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    z-index: 2000;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+/* PROFILE */
+.sidebar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+}
+.profile-icon {
+    height: 40px;
+    width: 40px;
+}
+
+.close-sidebar-btn {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+/*KSIĄŻKI*/
+.books-sidebar {
+    margin-bottom: 40%;
+}
+.btn-sidebar {
+    background-color: var(--light-purple);
+    border: 2px solid var(--purple);
+    text-align: center;
+    margin-bottom: 5px;
+}
+h2 {
+    color: var(--dark-purple);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sidebar-title {
+    text-align: left !important;
+    background: none;
+    border: none;
+    width: 100%;
+    margin: 10px 0;
+    color: var(--welcome-dark-purple);
+}
+.sidebar-list li {
+    max-width: 8px 0;
+    padding-left: 10px;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.clear-filters-btn {
+    bottom: 0;
+    color: var(--white);
+    text-align: left;
+}
+
+/*DOSTĘPNOŚĆ*/
+.label-text {
+    color: var(--welcome-dark-purple);
+    font-size: 14px;
+    font-weight: bold;
+}
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+/*tło*/
+.slider {
+    width: 40px;
+    height: 25px;
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 25px;
+    padding: 2px;
+    position: relative;
+    transition: 0.3s;
+}
+/*kółko */
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--light-grey);
+    border-radius: 50%;
+    top: 2px;
+    transition: 0.3s;
+}
+
+/* aktywne */
+input:checked + .slider {
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+}
+
+input:checked + .slider::before {
+    background-color: var(--purple);
+    transform: translateX(15px);
+}

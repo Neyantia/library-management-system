@@ -1,0 +1,35 @@
+
+.message {
+    text-align: center;
+    color: #8983BD;
+    margin-bottom: 25px;
+    p {
+        font-size: 16px;
+        font-weight: medium;
+    }
+}
+.app-layout {
+    height: 100vh;
+}
+
+.button-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 2%;
+}
+
+button {
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+}
+
+h3 {
+  text-align: center;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+}

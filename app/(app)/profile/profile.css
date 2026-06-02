@@ -1,0 +1,150 @@
+.app-layout {
+  min-height: auto;
+}
+.profile-page {
+  min-height: 100vh;
+  margin: 0 0 40px 0;
+  text-align: center;
+
+}
+
+.profile-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: -50px;
+  z-index: 100;
+}
+
+.avatar {
+  width: 170px !important;
+  height: 170px !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+/* OPIS */
+.profile-description {
+  width: 100%;
+  max-width: 800px;
+  margin: 10px auto 30px ;
+  background-color: var(--light-pink);
+  border: 5px solid var(--light-purple);
+  padding: 15px;
+  text-align: left;
+}
+
+.profile-books {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.book-placeholder {
+  width: 120px;
+  height: 180px;
+  background: var(--light-purple);
+  border-radius: 8px;
+}
+
+.profile-buttons {
+  position: absolute;
+  right: 30px;
+  top: 100px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-buttons button {
+  width: 140px;
+  height: 35px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-buttons button:hover {
+  opacity: 0.85;
+}
+
+.library-button {
+  position: absolute;
+  right: 30px;
+  width: 140px;
+  height: 35px;
+
+  border: none;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+
+  .profile-page {
+    padding: 0 15px 30px;
+  }
+
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .profile-header p {
+    font-size: 14px;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    font-size: 42px;
+  }
+
+  .profile-description {
+    width: 100%;
+    margin: 20px auto;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .profile-description h2 {
+    font-size: 20px;
+  }
+
+  .profile-books {
+    gap: 10px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+
+  .book-placeholder {
+    min-width: 90px;
+    width: 90px;
+    height: 135px;
+    flex-shrink: 0;
+  }
+
+  .profile-buttons {
+    position: static;
+    margin: 20px auto;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profile-buttons button {
+    width: 100%;
+    max-width: 260px;
+    height: 40px;
+    font-size: 14px;
+  }
+}

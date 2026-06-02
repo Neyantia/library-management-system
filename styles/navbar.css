@@ -1,0 +1,139 @@
+@import "./globals.css";
+
+.navbar {
+    background-color: var(--light-purple);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-row {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/*TOP NAVBAR*/
+.top-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 5px 5px;
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+}
+
+.menu-button {
+    @media (max-width: 768px) {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+    }
+}
+
+.logo {
+    color: var(--NAV-t);
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+
+    @media (max-width: 768px) {
+        grid-column: 2;
+        grid-row: 1;
+        position: static;
+        transform: none;
+        justify-self: center;
+    }
+}
+.logo-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+        transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+}
+.logo h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+.search {
+    background-color: var(--pink);
+    border: 2px solid var(--border-light-pink);
+    max-width: 300px;
+    height: 25px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: 15px;
+
+    @media (max-width: 768px) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        height: 28px;
+    }
+}
+
+
+/*BOTTOM NAVBAR*/
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-btn {
+    background-color: var(--light-purple);
+    border: 2px solid var(--purple);
+    border-radius: 0;
+    height: 35px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--dark-purple);
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
