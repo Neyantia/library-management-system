@@ -1,28 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background_image: url(../public/background.svg);
-
-  --moon-image: url(../public/moon_img.svg);
-  --moon_grl_image: url(../public/moon_grl_img.svg);
+  --background_image: url("/background.svg");
+  --moon-image: url("/moon_img.svg");
+  --moon_grl_image: url("/moon_grl_img.svg");
 }
 
 html, body {
   margin: 0;
   width: 100%;
-
+  min-height: 100%;
   font-family: 'Inter', sans-serif;
 }
 body {
+  min-height: 100vh;
+}
+
+.page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 90vh;
+.app-content {
+  flex: 1;
   width: 100%;
   margin: 0;
   
@@ -30,14 +31,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  object-fit: cover;
 
   @media (max-width: 768px) {
-    min-height: 50vh;
     background-position: top center;
     background-size: cover;
     overflow-x: hidden;
-    background-attachment: fixed;
   }
 }
 main {
@@ -50,8 +48,8 @@ button {
   font-weight: bold;
 }
 
+/*COLORS*/
 @theme {
-  /*COLORS*/
   --purple: #7D73AD;
   --welcome-dark-purple: #524C87;
   --welcome-light-purple: #8983BD;
@@ -90,4 +88,3 @@ button {
   box-shadow: inset 0 0 5px var(--pink);
   border-radius: 8px;
 }
-
