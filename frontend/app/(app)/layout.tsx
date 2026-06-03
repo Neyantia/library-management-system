@@ -8,14 +8,14 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="page-wrapper">
       <NavBar />
       
-      <div className="app-layout">
-        <main>{children}</main>
-      </div>
+      <main className="app-content">
+        {children}
+      </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
