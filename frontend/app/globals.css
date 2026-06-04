@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background_image: url(/background.svg);
+
+  --loading_screen: url(/loading_screen.svg);
+  --loading_screen2: url(/loading_screen2.svg);
+
+  --moon_image: url(/moon.svg);    /* login */
+
+  /*BOOKS COVERS*/
+  --demon_slayer: url(/book-cover/demon_slayer.svg);
+  --her_soul_to_take: url(/book-cover/her_soul_to_take.svg);
+  --nie_pochowani: url(/book-cover/nie_pochowani.svg);
+  --bridgertonowie: url(/book-cover/bridgertonowie.svg);
+  --nie-boska_komedia: url(/book-cover/nie-boska_komedia.svg);
+
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  min-width: 100hv;
+  font-family: 'Inter', sans-serif;
+    
+  background-image: var(--background_image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.app-layout {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+.app-layout main {
+  flex: 1;
+}
+button {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@theme {
+  /*COLORS*/
+  --purple: #7D73AD;
+  --welcome-dark-purple: #524C87;
+  --welcome-light-purple: #8983BD;
+  
+  --dark-purple: #493F74;
+  --light-purple: #8D7EB1;
+  --pink: #D7D1EE;
+  --light-pink: #ECE9FF;
+  --border-light-pink: #C0B5FF;
+  --grey: #777777;
+  --light-grey: #D9D9D9;
+  --border-grey: #BFBFBF;
+  --button-grey: #828282;
+  --white: #FFFFFF;
+
+  --NAV-t: #CDC9ED;
+
+  --t-red: #702E39;
+  --T-dark-red: #813248;
+  --btn-red: #9F547D;
+  --background-red: #FDE9FF;
+  --background-border-red: #B17EA0;
+}
+
+/*SCROLLBAR*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-purple);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--pink);
+  border-radius: 8px;
+}

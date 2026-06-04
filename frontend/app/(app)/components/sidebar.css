@@ -1,0 +1,102 @@
+@import "../../globals.css";
+
+.menu-button {
+    color: var(--pink);
+    font-size: 20px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    position: relative;
+    top: auto;
+    left: 15px;
+    z-index: 3000;
+}
+
+.sidebar {
+    background-color: var(--pink);
+    width: 300px;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 55px;
+    left: 0;
+    padding: 30px 20px;
+    z-index: 1000;
+}
+
+/*KSIĄŻKI*/
+.books-sidebar {
+    margin-bottom: 40%;
+}
+.btn-sidebar {
+    background-color: var(--light-purple);
+    border: 2px solid var(--purple);
+    text-align: center;
+    margin-bottom: 5px;
+}
+h2 {
+    color: var(--dark-purple);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sidebar-title {
+    text-align: left !important;
+    background: none;
+    border: none;
+    width: 100%;
+    margin: 10px 0;
+}
+.sidebar-list p {
+    max-width: 8px 0;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*DOSTĘPNOŚĆ*/
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+/*tło*/
+.slider {
+    width: 50px;
+    height: 25px;
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 25px;
+    position: relative;
+    transition: 0.3s;
+}
+/*kółko */
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--light-grey);
+    border-radius: 50%;
+    top: 2px;
+    transition: 0.3s;
+}
+
+/* aktywne */
+input:checked + .slider {
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+}
+
+input:checked + .slider::before {
+    background-color: var(--purple);
+    transform: translateX(25px);
+}

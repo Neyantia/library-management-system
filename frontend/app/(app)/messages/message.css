@@ -1,0 +1,32 @@
+
+.container-comunikat {
+    background-color: var(--background-red);
+    border:2px solid var(--background-border-red);
+    background-image:center;
+    background-size:cover;
+    
+    width: 100%;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        min-height: 91vh;
+    }
+}
+.text-comunikat {
+    max-width: 800px;
+    
+    @media (max-width: 768px) {
+        max-width: 80%;
+    }
+}
+h1 {
+    color: var(--T-dark-red);
+}
+
+p {
+    color: var(--t-red);
+}
