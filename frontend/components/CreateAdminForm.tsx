@@ -99,6 +99,14 @@ export default function CreateAdminForm({ type }: Props) {
         let body = {};
 
         if (type === "book") {
+            const isValidImage =
+                /\.(jpg|jpeg|png|webp|gif)$/i.test(formData.coverImageUrl);
+
+            if (!isValidImage) {
+                setMessage("Podaj bezpośredni link do obrazka");
+                return;
+            }
+            
             body = {
                 title: formData.title,
                 subtitle: formData.subtitle,
@@ -136,15 +144,7 @@ export default function CreateAdminForm({ type }: Props) {
             };
         }
 
-        const isValidImage =
-            /\.(jpg|jpeg|png|webp|gif)$/i.test(formData.coverImageUrl);
-
-        if (!isValidImage) {
-            setMessage("Podaj bezpośredni link do obrazka");
-            return;
-        }
-
-        const response = await fetch(
+            const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}${endpoint}`,
             {
                 method: "POST",
@@ -336,7 +336,7 @@ export default function CreateAdminForm({ type }: Props) {
             )}
 
             <>
-        {message && <p style={{color:"var(--T-dark-red)", fontSize:"20px"}}>
+        {message && <p style={{color:"var(--T-dark-red)", fontSize:"20px", alignItems: "center"}}>
             <strong>{message}</strong>
         </p>}
             <button type="submit">Dodaj</button>

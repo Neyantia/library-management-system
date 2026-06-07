@@ -27,15 +27,28 @@ export default function BookCard({
             <div className="book-btn-actions">
                 <Button
                     style={{backgroundColor: "var(--light-purple)", fontSize: "12px"}}
-                    onClick={() => router.push("/books-list")}
+                    onClick={() => {
+                        const savedIds = JSON.parse(
+                            localStorage.getItem("bookCart") || "[]"
+                        );
+
+                        if (!savedIds.includes(id)) {
+                            savedIds.push(id);
+                        }
+
+                        localStorage.setItem("bookCart", JSON.stringify(savedIds));
+
+                        router.push("/books-list");
+                    }}
                 >
                     DODAJ DO LISTY
                 </Button>
 
+
                 <Button
                     style={{backgroundColor: "var(--dark-purple)", fontSize: "12px"}}
                     onClick={() => {
-                        if (availableCopiesCount <= 0) {router.push("/message");
+                        if (availableCopiesCount <= 0) {router.push("/book-order-status");
                             return;
                         }
                         router.push(`/question-order?bookIds=${id}`);
