@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiFetch } from "@/lib/api";
 import type { BookItem } from "@/lib/typeTable";
 import BackButton from "@/components/BackButton";
@@ -14,10 +14,13 @@ import "@/styles/return.css";
 export default function QuestionReturnPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const queryClient = useQueryClient();
 
     const bookId = searchParams.get("bookId");
     const borrowingId = searchParams.get("borrowingId");
+
     const [message, setMessage] = useState("");
+    const [isReturning, setIsReturning] = useState(false);
 
     const { data: book, isError } = useQuery<BookItem>({
         queryKey: ["return-book", bookId],
@@ -29,7 +32,6 @@ export default function QuestionReturnPage() {
             }
 
             const data = await response.json();
-
             return data.item ?? data;
         },
         enabled: !!bookId,
@@ -41,21 +43,41 @@ export default function QuestionReturnPage() {
             return;
         }
 
-        const response = await apiFetch(
-            `/borrowings/${borrowingId}/return`,
-            {
-                method: "POST",
+        if (isReturning) return;
+
+        setIsReturning(true);
+        setMessage("");
+
+        try {
+            const response = await apiFetch(
+                `/borrowings/${borrowingId}/return`,
+                {
+                    method: "POST",
+                }
+            );
+
+            if (!response.ok) {
+                const data = await response.json();
+                setMessage(data.message || "Nie udało się zwrócić książki");
+                return;
             }
-        );
 
-        if (!response.ok) {
-            const data = await response.json();
+            await queryClient.invalidateQueries({
+                queryKey: ["borrowings-current"],
+            });
 
-            setMessage(data.message || "Nie udało się zwrócić książki");
-            return;
+            await queryClient.invalidateQueries({
+                queryKey: ["borrowings-returned"],
+            });
+
+            await queryClient.invalidateQueries({
+                queryKey: ["return-book", bookId],
+            });
+
+            router.push(`/sucess-return?bookId=${bookId}`);
+        } finally {
+            setIsReturning(false);
         }
-
-        router.push(`/sucess-return?bookId=${bookId}`);
     }
 
     if (isError) {
@@ -64,73 +86,73 @@ export default function QuestionReturnPage() {
 
     return (
         <ProtectedRoute>
-        <BackButton />
+            <BackButton />
 
-        <main className="container-return">
-            <div className="return-header">
-                <h1>ZWROT</h1>
-                <h2>Czy na pewno chcesz oddać?</h2>
+            <main className="container-return">
+                <div className="return-header">
+                    <h1>ZWROT</h1>
+                    <h2>Czy na pewno chcesz oddać?</h2>
 
-                <span>
-                    {new Date().toLocaleDateString("pl-PL")}
-                </span>
-            </div>
-
-            {book && (
-                <div className="return-books">
-                    <div className="return-book-item">
-                        <img
-                            className="return-book-cover"
-                            src={book.coverImageUrl}
-                            alt={book.title}
-                        />
-
-                        <p className="return-book-title">
-                            {book.title}
-                        </p>
-                    </div>
+                    <span>{new Date().toLocaleDateString("pl-PL")}</span>
                 </div>
-            )}
 
-            {message && (
-                <p
-                    style={{
-                        color: "var(--T-dark-red)",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        marginBottom: "15px",
-                    }}
-                >
-                    {message}
-                </p>
-            )}
+                {book && (
+                    <div className="return-books">
+                        <div className="return-book-item">
+                            <img
+                                className="return-book-cover"
+                                src={book.coverImageUrl}
+                                alt={book.title}
+                            />
 
-            <div className="order-actions">
-                <button
-                    className="order-confirm-btn"
-                    type="button"
-                    onClick={handleReturn}
-                    style={{
-                        backgroundColor: "var(--dark-purple)",
-                        fontSize: "16px",
-                    }}
-                >
-                    TAK
-                </button>
+                            <p className="return-book-title">
+                                {book.title}
+                            </p>
+                        </div>
+                    </div>
+                )}
 
-                <button
-                    className="order-cancel-btn"
-                    type="button"
-                    onClick={() => router.back()}
-                    style={{
-                        backgroundColor: "var(--grey)",
-                        fontSize: "16px",
-                    }}
-                >
-                    ANULUJ
-                </button>
-            </div>
-        </main>
+                {message && (
+                    <p
+                        style={{
+                            color: "var(--T-dark-red)",
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            marginBottom: "16px",
+                        }}
+                    >
+                        {message}
+                    </p>
+                )}
+
+                <div className="order-actions">
+                    <button
+                        className="order-confirm-btn"
+                        type="button"
+                        onClick={handleReturn}
+                        disabled={isReturning}
+                        style={{
+                            backgroundColor: "var(--dark-purple)",
+                            fontSize: "16px",
+                        }}
+                    >
+                        {isReturning ? "ZWRACANIE..." : "TAK"}
+                    </button>
+
+                    <button
+                        className="order-cancel-btn"
+                        type="button"
+                        onClick={() => router.back()}
+                        disabled={isReturning}
+                        style={{
+                            backgroundColor: "var(--grey)",
+                            fontSize: "16px",
+                        }}
+                    >
+                        ANULUJ
+                    </button>
+                </div>
+            </main>
         </ProtectedRoute>
     );
 }
